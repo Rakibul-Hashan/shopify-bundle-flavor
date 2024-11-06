@@ -1,0 +1,327 @@
+@font-face {
+  font-family: "Gilroy";
+  src: url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot");
+  src: local("Gilroy Extrabold"), local("Gilroy-Extrabold"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.ttf")
+      format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.eot");
+  src: local("Gilroy Light"), local("Gilroy-Light"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.ttf")
+      format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  font-family: "Gilroy";
+}
+
+/* Variant selection container styling */
+.dly-variant-selection {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e8f6f8;
+  border-radius: 10px;
+}
+
+/* Variant box styling */
+.dly-variant {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.dly-variant.selected {
+  border-color: #ffeb3b; /* Highlighted yellow border when selected */
+  box-shadow: 0px 0px 15px rgba(255, 235, 59, 0.5); /* Soft glow effect */
+}
+
+/* Variant badge styling */
+.dly-variant-badge {
+  position: absolute;
+  top: -10px;
+  background-color: #ffeb3b;
+  color: #000;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dly-variant img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.dly-variant p {
+  font-size: 0.9em;
+  color: #333;
+  margin: 5px 0 0;
+  text-align: center;
+}
+
+/* General Styles */
+.dly-container {
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.dly-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dly-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.dly-item-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.dly-item-details h3 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+}
+
+.dly-item-details p {
+  margin: 5px 0;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.dly-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 0.7em;
+  font-weight: bold;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dly-badge.limited {
+  background-color: #8b00ff;
+}
+
+.dly-add-btn {
+  background-color: #4a00e0;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dly-quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.dly-quantity-btn {
+  background-color: #4a00e0;
+  color: #fff;
+  border: none;
+  padding: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dly-quantity-number {
+  padding: 0 10px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.dly-scroll-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #4a00e0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* CSS to initially hide quantity controls */
+.dly-quantity-control {
+  display: none;
+}
+
+/* Add to Cart Section */
+.dly-cart-section {
+  background-color: #e8f6f8;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dly-add-to-cart-btn {
+  background-color: #ffeb3b;
+  color: #000;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.dly-add-to-cart-btn.disabled {
+  background-color: #f1e4ff;
+  color: #6a52a3;
+  cursor: not-allowed;
+}
+
+.dly-add-to-cart-btn.enabled {
+  background-color: #ffeb3b;
+  color: #000;
+  cursor: pointer;
+}
+
+.dly-cart-summary {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.dly-cart-summary p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.dly-divider {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 15px 0;
+}
+
+.dly-frequently-bought {
+  text-align: left;
+  font-weight: bold;
+  color: #0074d9;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.dly-frequently-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dly-frequently-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.dly-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dly-item-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.dly-frequently-item .dly-add-btn {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dly-frequently-item .dly-add-btn.added {
+  background-color: #4caf50; /* Green for added */
+  color: #fff;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+  .dly-cart-summary {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .dly-frequently-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .dly-item-details {
+    align-items: center;
+  }
+}
