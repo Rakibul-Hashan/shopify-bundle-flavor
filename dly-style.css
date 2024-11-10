@@ -46,7 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding: 0px;
   background-color: #fff;
   border: 2px solid transparent;
   border-radius: 10px;
@@ -74,8 +74,8 @@ body {
 }
 
 .dly-variant img {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 5px;
   border-radius: 10px;
   object-fit: cover;
@@ -87,12 +87,52 @@ body {
   margin: 5px 0 0;
   text-align: center;
 }
+p.dly-variant-price {
+  display: none;
+}
+p.dly-variant-title {
+  position: absolute;
+  bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: red;
+}
 
 /* General Styles */
 .dly-container {
   max-width: 450px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 00px;
+}
+
+/* ITEMS  */
+.dly-items-container {
+  height: 220px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+/* width */
+.dly-items-container::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px;
+}
+
+/* Track */
+.dly-items-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.dly-items-container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.dly-items-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .dly-item {
@@ -100,18 +140,19 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  border: 1px solid #ddd;
+  padding: 0 10px 0 0;
+  /* border: 1px solid #ddd; */
   border-radius: 10px;
   margin-bottom: 15px;
   background-color: #fff;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+  gap: 10px;
 }
 
 .dly-item img {
   width: 80px;
   height: 80px;
-  border-radius: 5px;
+  border-radius: 5px 0 0px 5px;
   object-fit: cover;
 }
 
@@ -135,16 +176,16 @@ body {
 
 .dly-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0;
+  right: 18px;
   background-color: #ff8c00;
   color: #fff;
-  padding: 4px 10px;
-  font-size: 0.7em;
-  font-weight: bold;
-  border-radius: 15px;
+  padding: 2px 4px;
+  font-size: 8px;
+  font-weight: 400;
+  border-radius: 0 0 5px 5px;
   text-align: center;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px #0000001a;
 }
 
 .dly-badge.limited {
@@ -160,11 +201,17 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  border-radius: 30px;
+  width: 100px;
+  text-align: center;
 }
 
 .dly-quantity-control {
   display: flex;
   align-items: center;
+  width: 100px;
+  text-align: center;
+  justify-content: space-between;
 }
 
 .dly-quantity-btn {

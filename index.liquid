@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flavour Selection</title>
+  </head>
+  <body>
+    <div class="dly-container">
+      <!-- Variant Selection Section -->
+      <div class="dly-container">
+        <div class="dly-variant-selection">
+          {% for variant in product.variants %}
+            {% assign custom_discount = variant.metafields.custom.custom_discount %}
+            {% assign final_price = variant.price | minus: custom_discount %}
+
+              <div
+              class="dly-variant"
+              data-variant-id="{{ variant.id }}"
+              data-item-id="{{ forloop.index }}"
+              data-price="{{ final_price | divided_by: 100 }}"
+              data-compare-price="{{ variant.compare_at_price | divided_by: 100 }}"
+              data-custom-discount="{{ custom_discount }}">
+
+              <!-- Discount badge if custom discount is set -->
+              {% if custom_discount > 0 %}
+                <div class="dly-variant-badge">
+                  SAVE {{ custom_discount }}%</div>
+              {% endif %}
+
+              <img src="{{ variant.featured_image | img_url: '200x200' }}" alt="{{ variant.title }}" />
+              <p class="dly-variant-title">{{ variant.title }}</p>
+              <p class="dly-variant-price">{{ final_price | money }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Product items section populated from a collection -->
+      <div class="dly-container dly-items-container">
+        {% for product in collections['flavors'].products %}
+          <div
+            class="dly-item"
+            data-item-variant-id="{{ product.variants.first.id }}"
+            data-item-price="{{ product.variants.first.price | divided_by: 100 }}">
+
+            <!-- Badge based on tags -->
+            {% if product.tags contains 'Best Seller' %}
+              <span class="dly-badge">BEST SELLER</span>
+            {% elsif product.tags contains 'Limited Release' %}
+              <span class="dly-badge limited">LIMITED RELEASE</span>
+            {% endif %}
+
+            <!-- Product image -->
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: '200x200' }}" alt="{{ product.title }}" />
+            {% else %}
+              <img src="https://via.placeholder.com/200" alt="Placeholder Image" />
+            {% endif %}
+
+            <!-- Product details -->
+            <div class="dly-item-details">
+              <h3>{{ product.title }}</h3>
+              <p>{{ product.description | strip_html | truncatewords: 15 }}</p>
+            </div>
+
+            <!-- Add + button and quantity controls -->
+            <div class="dly-add-btn" role="button">Add +</div>
+            <div class="dly-quantity-control">
+              <span class="dly-quantity-btn" role="button">-</span>
+              <div class="dly-quantity-number">1</div>
+              <span class="dly-quantity-btn" role="button">+</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Add to Cart Section -->
+      <div class="dly-cart-section">
+        <div
+          class="dly-add-to-cart-btn disabled"
+          role="button"
+          aria-disabled="true">
+          SELECT 1 MORE BAG
+        </div>
+        <div class="dly-cart-summary">
+          <p>Subtotal:
+            <span class="dly-cart-subtotal">₱2,800</span>
+          </p>
+          <p>You're Saving:
+            <span class="dly-cart-saving">₱000</span>
+          </p>
+        </div>
+        <hr class="dly-divider" />
+        <div class="dly-frequently-bought">
+          <h4>Frequently Bought With:</h4>
+          <div class="dly-frequently-item">
+            <img src="./assets/placeholder-image.png" alt="Whisk" />
+            <div class="dly-item-details">
+              <p>DAYLY Whisk</p>
+              <p>₱800</p>
+              <div class="dly-add-btn" role="button">+ADD</div>
+            </div>
+          </div>
+          <div class="dly-frequently-item">
+            <img src="./assets/placeholder-image.png" alt="Whisk" />
+            <div class="dly-item-details">
+              <p>DAYLY Whisk</p>
+              <p>₱800</p>
+              <div class="dly-add-btn" role="button">+ADD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dly-scroll-message">Scroll for more flavours</div>
+    <script src="dly-script.js"></script>
+  </body>
+</html>

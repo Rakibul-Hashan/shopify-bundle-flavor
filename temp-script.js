@@ -1,4 +1,3 @@
-// everything working properly
 document.addEventListener("DOMContentLoaded", function () {
     const variants = document.querySelectorAll(".dly-variant");
     const addToCartButton = document.querySelector(".dly-add-to-cart-btn");
